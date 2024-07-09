@@ -66,8 +66,9 @@ sns.countplot(x='Survived', hue='Embarked', data=titanic_data)
 plt.title('Survival Count by Embarked Port')
 plt.show()
 
-# Correlation matrix
-correlation_matrix = titanic_data.corr()
+# Correlation matrix - Select only numerical columns
+numerical_data = titanic_data.select_dtypes(include=[np.number]) # Select numerical columns only
+correlation_matrix = numerical_data.corr()
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.title('Correlation Matrix')
 plt.show()
